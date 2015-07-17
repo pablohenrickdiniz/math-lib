@@ -1,7 +1,7 @@
 var Overlap = {
     circleLine: function (circle, line) {
         var med = Math.med(line.pa, line.pb);
-        var degree = Math.getDegreeFromVec(line.pa, line.pb);
+        var degree = Math.degreeFromVec(line.pa, line.pb);
         var va = Math.rotate(line.pa, -degree, med);
         var vb = Math.rotate(line.pb, -degree, med);
         var cc = Math.rotate({x: circle.x, y: circle.y}, -degree, med);
