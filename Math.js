@@ -1,52 +1,106 @@
-Math.dot = function dot(x, y) { //dot product
-    return x.reduce(function (p, c, i) {
-        return p + x[i] * y[i];
+Math.dot = function(x,y){
+    return Object.keys(x).reduce(function (p, c) {
+        return p + x[c] * y[c];
     }, 0);
 };
 
-Math.norm = function (x) { //2-norm of a vector
+Math.vxv = function(x,y){
+    var vec = {};
+    Object.keys(x).forEach(function (index) {
+        vec[index] = x[index]*y[index];
+    });
+    return vec;
+};
+
+Math.vdv = function(x,y){
+    var vec = {};
+    Object.keys(x).forEach(function (index) {
+        vec[index] = x[index]/y[index];
+    });
+    return vec;
+};
+
+Math.vpv = function(x, y){
+    var vec = {};
+    Object.keys(x).forEach(function (index) {
+        vec[index] = x[index]+y[index];
+    });
+    return vec;
+};
+
+Math.vmv = function(x, y){
+    var vec = {};
+    Object.keys(x).forEach(function (index) {
+        vec[index] = x[index]-y[index];
+    });
+    return vec;
+};
+
+Math.sxv = function(c,x){
+    var vec = {};
+    Object.keys(x).forEach(function (index) {
+        vec[index] = x[index]*c;
+    });
+    return vec;
+};
+
+Math.mxv = function(m,x){
+    return m.map(function (mElem) {
+        return Math.dot(mElem, x);
+    });
+};
+
+Math.cross2 = function(x,y) {
+    return x.x * y.y - x.y * y.x;
+};
+
+Math.norm = function(x){
     return Math.sqrt(Math.dot(x, x));
 };
 
-Math.vpv = function (x, y) { //element-wise addition
-    return x.map(function (xElem, i) {
-        return xElem + y[i];
+Math.normalize = function(x){
+    return Math.sxv(1 / Math.norm(x), x);
+};
+
+Math.med = function(va, vb){
+    var vec = {};
+    Object.keys(va).forEach(function(index){
+        vec[index] = (va[index]+vb[index])/2;
     });
+    return vec;
 };
 
-Math.vmv = function (x, y) { //element-wise subtraction
-    return x.map(function (xElem, i) {
-        return xElem - y[i];
-    });
+Math.rotate = function(va, theta, center){
+    var rad = Math.degreeToRadians(theta);
+    center = center == undefined ? {x:0,y:0} : center;
+    var radc = Math.cos(rad);
+    var rads = Math.sin(rad);
+    var suba = va.x - center.x;
+    var subb = va.y - center.y;
+    return [(suba * radc - subb * rads) + center.x, (subb * radc + suba * rads) + center.y];
 };
 
-Math.med = function (va, vb) {
-    return Math.vpv(va, vb).map(function (xElem) {
-        return xElem / va.length;
-    });
+Math.degreeToRadians = function(theta){
+    return theta * (Math.PI / 180);
 };
 
-Math.parse_degree = function (radians) {
-    return radians * (180 / Math.PI);
+Math.degreeFromVec = function(va, vb){
+    return Math.radiansToDegree(Math.radiansFromVec(va, vb));
 };
 
-Math.parse_radians = function (degree) {
-    return degree / (180 / Math.PI);
+Math.radiansFromVec = function(va, vb){
+    var pe = Math.dot(va, vb);
+    var na = Math.norm(va);
+    var nb = Math.norm(vb);
+    return Math.acos(pe / (na * nb));
 };
 
-
-Math.get_degree = function (a, b) {
-    return Math.parse_degree(Math.acos(Math.dot(a, b) / (Math.norm(a) * Math.norm(b))));
+Math.radiansToDegree = function(theta){
+    return theta * (180 / Math.PI);
 };
 
-
-Math.get_clock_degree = function (origin, p) {
-    var va = [0, -1];
-    var vb = [p[0] - origin[0], p[1] - origin[1]];
-    var degree = Math.get_degree(va, vb);
-    return vb[0] < 0 ? 360 - degree : degree;
-};
-
-Math.distance = function (pa, pb) {
-    return Math.sqrt(Math.pow(pa[0] - pb[0], 2) + Math.pow(pa[1] - pb[1], 2));
+Math.distance = function(va,vb){
+    return Math.sqrt(Object.keys(va).reduce(function(p,c){
+        return p + Math.pow(va[c] - vb[c],2);
+    },0));
 };
