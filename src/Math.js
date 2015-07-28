@@ -1,4 +1,4 @@
-dMath.dot = function(x,y){
+Math.dot = function(x,y){
     return Object.keys(x).reduce(function (p, c) {
         return p + x[c] * y[c];
     }, 0);
