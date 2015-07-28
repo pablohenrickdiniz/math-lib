@@ -5,11 +5,7 @@
   "authors": [
     "Pablo Henrick Diniz <phydokz@hotmail.com>"
   ],
-    "directories":[
-        "/src",
-        "/test"
-    ],
-  "main": "src/Math.js",
+  "main": "/src/Math.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
