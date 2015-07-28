@@ -6,6 +6,10 @@
     "Pablo Henrick Diniz <phydokz@hotmail.com>"
   ],
   "description": "Biblioteca para calculos de fisica",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pablohenrickdiniz/MathLib"
+    },
   "main": [
     "src/Math.js",
     "src/Overlap.js"
