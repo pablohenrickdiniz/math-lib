@@ -6,9 +6,16 @@
     "Pablo Henrick Diniz <phydokz@hotmail.com>"
   ],
   "description": "Biblioteca para calculos de fisica",
-  "main": ["src/Math.js","src/Overlap.js"],
+  "main": [
+    "src/Math.js",
+    "src/Overlap.js"
+  ],
   "moduleType": [
-    "amd"
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
   ],
   "keywords": [
     "Fisica",
