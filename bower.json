@@ -1,0 +1,26 @@
+{
+  "name": "mathlib",
+  "version": "1.0",
+  "homepage": "https://github.com/pablohenrickdiniz/MathLib",
+  "authors": [
+    "Pablo Henrick Diniz <phydokz@hotmail.com>"
+  ],
+  "description": "Biblioteca para calculos de fisica",
+  "main": "src/Math.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "Fisica",
+    "Geometria",
+    "Matematica"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
