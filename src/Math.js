@@ -85,13 +85,15 @@ Math.degreeToRadians = function(theta){
 };
 
 Math.degreeFromVec = function(va, vb){
-    return Math.radiansToDegree(Math.radiansFromVec(va, vb));
+    var radians = Math.radiansFromVec(va, vb);
+    return Math.radiansToDegree(radians);
 };
 
 Math.radiansFromVec = function(va, vb){
     var pe = Math.dot(va, vb);
     var na = Math.norm(va);
     var nb = Math.norm(vb);
+
     return Math.acos(pe / (na * nb));
 };
 
@@ -103,4 +105,16 @@ Math.distance = function(va,vb){
     return Math.sqrt(Object.keys(va).reduce(function(p,c){
         return p + Math.pow(va[c] - vb[c],2);
     },0));
+};
+
+Math.clockWiseDegreeFromVec = function(va){
+    var vb = {
+        x:0,
+        y:-1
+    };
+    var degree = Math.degreeFromVec(va,vb);
+    if(va.x < 0){
+        degree = 360-degree;
+    }
+    return degree;
 };

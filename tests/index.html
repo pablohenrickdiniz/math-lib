@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste</title>
+    <style type="text/css">
+        #canvas{
+            border:1px solid #CCC;
+        }
+    </style>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../src/Math.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var draw = {
+                point:null,
+                drawing:false,
+                context:$("#canvas")[0].getContext('2d')
+            };
+
+
+            $('#canvas').click(function(e){
+                if(!draw.drawing){
+                    draw.point = {
+                        x: e.clientX,
+                        y: e.clientY
+                    };
+                    draw.drawing = true;
+                }
+                else{
+                    draw.point = null;
+                    draw.drawing = false;
+                }
+            });
+
+            $("#canvas").mousemove(function(e){
+                if(draw.drawing){
+                    var pa = draw.point;
+                    var pb =  {
+                        x: e.clientX,
+                        y: e.clientY
+                    };
+                    draw.context.clearRect(0,0,500,500);
+                    draw.context.strokeStyle = '#000000';
+                    draw.context.beginPath();
+                    draw.context.moveTo(pa.x,pa.y);
+                    draw.context.lineTo(pb.x,pb.y);
+                    draw.context.stroke();
+
+
+                    var vc = Math.vmv(pb,pa);
+
+                    var degree = Math.clockWiseDegreeFromVec(vc);
+                    console.log(degree);
+                    $("#degree").html('degree:'+degree);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500">
+
+    </canvas>
+    <div class="clearfix"></div>
+    <span id="dregree">
+        degree:0
+    </span>
+</body>
+</html>
