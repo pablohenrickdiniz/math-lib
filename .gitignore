@@ -7,4 +7,7 @@
 *.iml
 out
 gen
-
+.module-cache
+bower_components
+node_modules
+tests

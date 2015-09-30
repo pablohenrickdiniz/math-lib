@@ -83,7 +83,5 @@ define(function(){
             return c;
         }
     };
-
-
 });
 
