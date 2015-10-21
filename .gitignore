@@ -11,3 +11,5 @@ gen
 bower_components
 node_modules
 tests
+*.min.min.js
+*.min.min.css
