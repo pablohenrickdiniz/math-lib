@@ -1,6 +1,6 @@
 {
   "name": "phydokz/math-lib",
-  "homepage": "https://github.com/pablohenrickdiniz/MathLib",
+  "homepage": "https://github.com/pablohenrickdiniz/math-lib",
   "authors": [
     "Pablo Henrick <phydokz@hotmail.com>"
   ],
@@ -8,7 +8,7 @@
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
