@@ -1,5 +1,5 @@
-define(function(){
-    return {
+(function(w){
+    w.Overlap = {
         circleLine: function (circle, line) {
             var med = Math.med(line.pa, line.pb);
             var degree = Math.degreeFromVec(line.pa, line.pb);
@@ -56,10 +56,10 @@ define(function(){
             var ld = {pa: pd, pb: pa};
 
             return (
-            this.circleLine(circle, la) ||
-            this.circleLine(circle, lb) ||
-            this.circleLine(circle, lc) ||
-            this.circleLine(circle, ld)
+                this.circleLine(circle, la) ||
+                this.circleLine(circle, lb) ||
+                this.circleLine(circle, lc) ||
+                this.circleLine(circle, ld)
             );
         },
         rectIntersectRect: function (rectA, rectB) {
@@ -82,5 +82,4 @@ define(function(){
             return c;
         }
     };
-});
-
+})(window);
