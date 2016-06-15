@@ -41,7 +41,7 @@
         var rads = Math.sin(rad);
         var suba = va.x - center.x;
         var subb = va.y - center.y;
-        return [(suba * radc - subb * rads) + center.x, (subb * radc + suba * rads) + center.y];
+        return {x:(suba * radc - subb * rads) + center.x, y:(subb * radc + suba * rads) + center.y};
     };
 
     math.degreeFromVec = function(va, vb){
