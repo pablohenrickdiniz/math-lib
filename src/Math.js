@@ -37,8 +37,8 @@
     math.rotate = function(va, theta, center){
         var rad = math.degreeToRadians(theta);
         center = center == undefined ? {x:0,y:0} : center;
-        var radc = m.cos(rad);
-        var rads = m.sin(rad);
+        var radc = Math.cos(rad);
+        var rads = Math.sin(rad);
         var suba = va.x - center.x;
         var subb = va.y - center.y;
         return [(suba * radc - subb * rads) + center.x, (subb * radc + suba * rads) + center.y];
