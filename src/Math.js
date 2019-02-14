@@ -79,6 +79,10 @@
         return degree;
     };
 
+    math.clockWiseRadiansFromVec = function(va){
+        return math.degreeToRadians(math.clockWiseDegreeFromVec(va));
+    };
+
     math.vdv = function (x, y) {
         var vec = {};
         Object.keys(x).forEach(function (index) {
